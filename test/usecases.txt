@@ -1,0 +1,35 @@
+ETANT DONNE une machine à café
+QUAND on insère moins de 50cts
+ALORS la somme est restituée
+ET aucun café n'est servi
+CAS (1ct, 2cts, 5cts, 10cts, 20cts)
+
+ETANT DONNE une machine à café
+QUAND on insère plus de 50cts
+ALORS un café est servi
+ET l'argent est encaissé
+CAS (1€, 2€)
+
+ETANT DONNE une machine à café n'ayant plus d'eau
+QUAND on insère 50cts
+ALORS la somme est restituée
+(ET aucun café n'est servi)
+
+ETANT DONNE une machine à café n'ayant pas de café
+QUAND on insère 50cts
+(ALORS le café n'est pas servi)
+ET la machine rend l'argent
+
+ETANT DONNE une machine à café n'ayant pas assez de café
+QUAND on insère 50cts
+(ALORS le café n'est pas servi)
+ET la machine rend l'argent
+
+ETANT DONNE une machine à café étant en panne
+QUAND on insère 50cts
+(ALORS le café n'est pas servi)
+ET la machine rend l'argent
+
+ETANT DONNE le paiement
+QUAND la machine détecte une pièce non autorisée
+ALORS le café n'est pas servi

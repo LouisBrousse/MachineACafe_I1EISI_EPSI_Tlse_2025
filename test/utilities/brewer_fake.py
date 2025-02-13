@@ -4,13 +4,18 @@ from hardware.brewer import BrewerInterface
 class BrewerFake(BrewerInterface):
     def __init__(self):
         self.__nb_appels_make_a_coffee = 0
+        self.__presence_d_eau = True
+        self.__defaillance = False
 
     def make_a_coffee(self) -> bool:
-        self.__nb_appels_make_a_coffee += 1
-        return True
+        if self.__defaillance:
+            return False
+        else:
+            self.__nb_appels_make_a_coffee += 1
+            return True
 
     def try_pull_water(self) -> bool:
-        raise NotImplementedError()
+        return self.__presence_d_eau
 
     def pour_milk(self) -> bool:
         raise NotImplementedError()
@@ -27,3 +32,10 @@ class BrewerFake(BrewerInterface):
     def nb_appels_make_a_coffee(self) -> int:
         return self.__nb_appels_make_a_coffee
 
+    def simuler_absence_d_eau(self) -> bool :
+        self.__presence_d_eau = False
+
+    def simuler_defaillance(self) -> bool:
+        self.__defaillance = True
+
+    
